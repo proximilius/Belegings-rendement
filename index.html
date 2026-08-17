@@ -9,320 +9,51 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Rendement" />
   <link rel="manifest" href="./manifest.webmanifest" />
-  <link rel="apple-touch-icon" href="./icons/icon-180.png" />
-  <link rel="icon" href="./icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="./icon-180.png" />
+  <link rel="icon" href="./icon-192.png" />
   <title>Belegging rendement</title>
-
   <style>
-    :root {
-      --bg: #101820;
-      --card: #172331;
-      --text: #f3f7fb;
-      --muted: #aab7c4;
-      --line: #2a3a4c;
-      --green: #23c46f;
-      --red: #ff5b5b;
-      --neutral: #d7dee7;
-      --input: #0d141d;
-    }
-
-    * { box-sizing: border-box; }
-
-    html { background: #080c11; }
-
-    body {
-      margin: 0;
-      min-height: 100dvh;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #20344a 0%, var(--bg) 42%, #080c11 100%);
-      color: var(--text);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding:
-        max(22px, env(safe-area-inset-top))
-        max(22px, env(safe-area-inset-right))
-        max(22px, env(safe-area-inset-bottom))
-        max(22px, env(safe-area-inset-left));
-    }
-
-    main {
-      width: 100%;
-      max-width: 430px;
-      background: rgba(23, 35, 49, 0.94);
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      padding: 24px;
-      box-shadow: 0 22px 60px rgba(0,0,0,.38);
-      backdrop-filter: blur(8px);
-    }
-
-    h1 {
-      margin: 0 0 8px;
-      font-size: 1.55rem;
-      letter-spacing: -0.02em;
-    }
-
-    p {
-      margin: 0 0 22px;
-      color: var(--muted);
-      line-height: 1.45;
-    }
-
-    label {
-      display: block;
-      font-weight: 700;
-      margin: 16px 0 8px;
-    }
-
-    input {
-      width: 100%;
-      font-size: 1.25rem;
-      padding: 15px 16px;
-      border-radius: 16px;
-      border: 1px solid var(--line);
-      background: var(--input);
-      color: var(--text);
-      outline: none;
-    }
-
-    input:focus {
-      border-color: #7aa7d9;
-      box-shadow: 0 0 0 4px rgba(122,167,217,.14);
-    }
-
-    .result {
-      margin-top: 24px;
-      padding: 20px;
-      border-radius: 20px;
-      background: #0d141d;
-      border: 1px solid var(--line);
-      text-align: center;
-    }
-
-    .percentage {
-      font-size: clamp(2.35rem, 11vw, 3.7rem);
-      font-weight: 900;
-      line-height: 1;
-      margin-bottom: 8px;
-      color: var(--neutral);
-    }
-
-    .plus { color: var(--green); }
-    .minus { color: var(--red); }
-    .zero { color: var(--neutral); }
-
-    .details {
-      font-size: 1rem;
-      color: var(--muted);
-    }
-
-    button {
-      width: 100%;
-      margin-top: 12px;
-      padding: 14px 16px;
-      border: 0;
-      border-radius: 16px;
-      font-size: 1rem;
-      font-weight: 800;
-      cursor: pointer;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    #save {
-      margin-top: 18px;
-      color: #07150d;
-      background: var(--green);
-    }
-
-    #reset {
-      color: #101820;
-      background: #f3f7fb;
-    }
-
-    .saved {
-      min-height: 1.35em;
-      margin-top: 12px;
-      color: var(--muted);
-      font-size: .9rem;
-      text-align: center;
-    }
-
-    .saved.ok { color: var(--green); }
-    .saved.error { color: var(--red); }
-
-    .hint {
-      margin-top: 16px;
-      font-size: .9rem;
-      color: var(--muted);
-      text-align: center;
-    }
-
-    .version {
-      margin-top: 8px;
-      color: #718093;
-      font-size: .75rem;
-      text-align: center;
-    }
+    :root{--bg:#101820;--card:#172331;--text:#f3f7fb;--muted:#aab7c4;--line:#2a3a4c;--green:#23c46f;--red:#ff5b5b;--neutral:#d7dee7;--input:#0d141d}
+    *{box-sizing:border-box}html{background:#080c11}
+    body{margin:0;min-height:100dvh;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at top,#20344a 0%,var(--bg) 42%,#080c11 100%);color:var(--text);display:flex;align-items:center;justify-content:center;padding:max(22px,env(safe-area-inset-top)) max(22px,env(safe-area-inset-right)) max(22px,env(safe-area-inset-bottom)) max(22px,env(safe-area-inset-left))}
+    main{width:100%;max-width:430px;background:rgba(23,35,49,.94);border:1px solid var(--line);border-radius:24px;padding:24px;box-shadow:0 22px 60px rgba(0,0,0,.38);backdrop-filter:blur(8px)}
+    h1{margin:0 0 8px;font-size:1.55rem;letter-spacing:-.02em}p{margin:0 0 22px;color:var(--muted);line-height:1.45}
+    label{display:block;font-weight:700;margin:16px 0 8px}
+    input{width:100%;font-size:1.25rem;padding:15px 16px;border-radius:16px;border:1px solid var(--line);background:var(--input);color:var(--text);outline:none}
+    input:focus{border-color:#7aa7d9;box-shadow:0 0 0 4px rgba(122,167,217,.14)}
+    .result{margin-top:24px;padding:20px;border-radius:20px;background:#0d141d;border:1px solid var(--line);text-align:center}
+    .percentage{font-size:clamp(2.35rem,11vw,3.7rem);font-weight:900;line-height:1;margin-bottom:8px;color:var(--neutral)}
+    .plus{color:var(--green)}.minus{color:var(--red)}.zero{color:var(--neutral)}
+    .details{font-size:1rem;color:var(--muted)}
+    button{width:100%;margin-top:12px;padding:14px 16px;border:0;border-radius:16px;font-size:1rem;font-weight:800;cursor:pointer;-webkit-tap-highlight-color:transparent}
+    #save{margin-top:18px;color:#07150d;background:var(--green)}#reset{color:#101820;background:#f3f7fb}
+    .saved{min-height:1.35em;margin-top:12px;color:var(--muted);font-size:.9rem;text-align:center}.saved.ok{color:var(--green)}.saved.error{color:var(--red)}
+    .hint{margin-top:16px;font-size:.9rem;color:var(--muted);text-align:center}.version{margin-top:8px;color:#718093;font-size:.75rem;text-align:center}
   </style>
 </head>
-
 <body>
-  <main>
-    <h1>Belegging rendement</h1>
-    <p>Vul je totale inleg en huidige portfoliowaarde in. De app rekent direct je plus of min uit.</p>
-
-    <label for="inleg">Inleg in euro’s</label>
-    <input id="inleg" inputmode="decimal" autocomplete="off" placeholder="Bijv. 2500" />
-
-    <label for="waarde">Waarde portfolio in euro’s</label>
-    <input id="waarde" inputmode="decimal" autocomplete="off" placeholder="Bijv. 2685" />
-
-    <section class="result" aria-live="polite">
-      <div id="percentage" class="percentage zero">0,00%</div>
-      <div id="details" class="details">Nog geen berekening</div>
-    </section>
-
-    <button type="button" id="save">Opslaan</button>
-    <button type="button" id="reset">Leegmaken</button>
-
-    <div id="saved" class="saved" aria-live="polite">Nog niets opgeslagen</div>
-    <div class="hint">Je laatste opgeslagen stand blijft lokaal op dit apparaat bewaard.</div>
-    <div class="version">PWA 2.1</div>
-  </main>
-
-  <script>
-    const inleg = document.getElementById('inleg');
-    const waarde = document.getElementById('waarde');
-    const percentage = document.getElementById('percentage');
-    const details = document.getElementById('details');
-    const save = document.getElementById('save');
-    const reset = document.getElementById('reset');
-    const saved = document.getElementById('saved');
-
-    const STORAGE_KEY = 'beleggingRendementV2';
-
-    function parseEuro(value) {
-      if (!value) return NaN;
-      return Number(value.replace(/\s/g, '').replace(',', '.'));
-    }
-
-    function formatEuro(value) {
-      return new Intl.NumberFormat('nl-NL', {
-        style: 'currency',
-        currency: 'EUR',
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-      }).format(value);
-    }
-
-    function calculate() {
-      const invested = parseEuro(inleg.value);
-      const current = parseEuro(waarde.value);
-
-      if (!Number.isFinite(invested) || !Number.isFinite(current) || invested <= 0) {
-        percentage.textContent = '0,00%';
-        percentage.className = 'percentage zero';
-        details.textContent = 'Vul eerst beide bedragen in';
-        return;
-      }
-
-      const diff = current - invested;
-      const pct = (diff / invested) * 100;
-      const sign = pct > 0 ? '+' : '';
-
-      percentage.textContent = `${sign}${pct.toLocaleString('nl-NL', {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-      })}%`;
-
-      percentage.className =
-        'percentage ' + (pct > 0 ? 'plus' : pct < 0 ? 'minus' : 'zero');
-
-      const diffText = `${diff >= 0 ? '+' : '-'}${formatEuro(Math.abs(diff))}`;
-      details.textContent = `${diffText} ten opzichte van je inleg`;
-    }
-
-    function formatSavedDate(isoDate) {
-      const date = new Date(isoDate);
-      if (Number.isNaN(date.getTime())) return '';
-
-      return new Intl.DateTimeFormat('nl-NL', {
-        day: '2-digit',
-        month: '2-digit',
-        year: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit'
-      }).format(date);
-    }
-
-    function loadSaved() {
-      try {
-        const raw = localStorage.getItem(STORAGE_KEY);
-        if (!raw) return;
-
-        const data = JSON.parse(raw);
-        inleg.value = data.inleg ?? '';
-        waarde.value = data.waarde ?? '';
-
-        if (data.savedAt) {
-          saved.textContent = `Laatst opgeslagen: ${formatSavedDate(data.savedAt)}`;
-          saved.className = 'saved ok';
-        }
-      } catch (err) {
-        saved.textContent = 'Lokale opslag kon niet worden gelezen';
-        saved.className = 'saved error';
-      }
-    }
-
-    [inleg, waarde].forEach(input => {
-      input.addEventListener('input', calculate);
-    });
-
-    save.addEventListener('click', () => {
-      const invested = parseEuro(inleg.value);
-      const current = parseEuro(waarde.value);
-
-      if (!Number.isFinite(invested) || !Number.isFinite(current) || invested <= 0) {
-        saved.textContent = 'Vul eerst beide bedragen geldig in';
-        saved.className = 'saved error';
-        return;
-      }
-
-      const data = {
-        inleg: inleg.value.trim(),
-        waarde: waarde.value.trim(),
-        savedAt: new Date().toISOString()
-      };
-
-      try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-        saved.textContent = `Opgeslagen: ${formatSavedDate(data.savedAt)}`;
-        saved.className = 'saved ok';
-      } catch (err) {
-        saved.textContent = 'Opslaan lukt niet op dit apparaat';
-        saved.className = 'saved error';
-      }
-    });
-
-    reset.addEventListener('click', () => {
-      inleg.value = '';
-      waarde.value = '';
-      calculate();
-      saved.className = 'saved';
-      inleg.focus();
-    });
-
-    loadSaved();
-    calculate();
-
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js').catch(() => {
-          // De app blijft bruikbaar als de service worker niet kan registreren.
-        });
-      });
-    }
-  </script>
-</body>
-</html>
+<main>
+  <h1>Belegging rendement</h1>
+  <p>Vul je totale inleg en huidige portfoliowaarde in. De app rekent direct je plus of min uit.</p>
+  <label for="inleg">Inleg in euro’s</label><input id="inleg" inputmode="decimal" autocomplete="off" placeholder="Bijv. 2500" />
+  <label for="waarde">Waarde portfolio in euro’s</label><input id="waarde" inputmode="decimal" autocomplete="off" placeholder="Bijv. 2685" />
+  <section class="result" aria-live="polite"><div id="percentage" class="percentage zero">0,00%</div><div id="details" class="details">Nog geen berekening</div></section>
+  <button type="button" id="save">Opslaan</button><button type="button" id="reset">Leegmaken</button>
+  <div id="saved" class="saved" aria-live="polite">Nog niets opgeslagen</div>
+  <div class="hint">Je laatste opgeslagen stand blijft lokaal op dit apparaat bewaard.</div><div class="version">PWA 2.1</div>
+</main>
+<script>
+const inleg=document.getElementById('inleg'),waarde=document.getElementById('waarde'),percentage=document.getElementById('percentage'),details=document.getElementById('details'),save=document.getElementById('save'),reset=document.getElementById('reset'),saved=document.getElementById('saved');
+const STORAGE_KEY='beleggingRendementV2';
+function parseEuro(v){if(!v)return NaN;return Number(v.replace(/\s/g,'').replace(',','.'))}
+function formatEuro(v){return new Intl.NumberFormat('nl-NL',{style:'currency',currency:'EUR',minimumFractionDigits:2,maximumFractionDigits:2}).format(v)}
+function calculate(){const i=parseEuro(inleg.value),c=parseEuro(waarde.value);if(!Number.isFinite(i)||!Number.isFinite(c)||i<=0){percentage.textContent='0,00%';percentage.className='percentage zero';details.textContent='Vul eerst beide bedragen in';return}const d=c-i,p=d/i*100,s=p>0?'+':'';percentage.textContent=`${s}${p.toLocaleString('nl-NL',{minimumFractionDigits:2,maximumFractionDigits:2})}%`;percentage.className='percentage '+(p>0?'plus':p<0?'minus':'zero');details.textContent=`${d>=0?'+':'-'}${formatEuro(Math.abs(d))} ten opzichte van je inleg`}
+function formatSavedDate(x){const d=new Date(x);if(Number.isNaN(d.getTime()))return'';return new Intl.DateTimeFormat('nl-NL',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'}).format(d)}
+function loadSaved(){try{const r=localStorage.getItem(STORAGE_KEY);if(!r)return;const d=JSON.parse(r);inleg.value=d.inleg??'';waarde.value=d.waarde??'';if(d.savedAt){saved.textContent=`Laatst opgeslagen: ${formatSavedDate(d.savedAt)}`;saved.className='saved ok'}}catch(e){saved.textContent='Lokale opslag kon niet worden gelezen';saved.className='saved error'}}
+[inleg,waarde].forEach(x=>x.addEventListener('input',calculate));
+save.addEventListener('click',()=>{const i=parseEuro(inleg.value),c=parseEuro(waarde.value);if(!Number.isFinite(i)||!Number.isFinite(c)||i<=0){saved.textContent='Vul eerst beide bedragen geldig in';saved.className='saved error';return}const d={inleg:inleg.value.trim(),waarde:waarde.value.trim(),savedAt:new Date().toISOString()};try{localStorage.setItem(STORAGE_KEY,JSON.stringify(d));saved.textContent=`Opgeslagen: ${formatSavedDate(d.savedAt)}`;saved.className='saved ok'}catch(e){saved.textContent='Opslaan lukt niet op dit apparaat';saved.className='saved error'}});
+reset.addEventListener('click',()=>{inleg.value='';waarde.value='';calculate();saved.className='saved';inleg.focus()});
+loadSaved();calculate();
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}))}
+</script>
+</body></html>
