@@ -1,4 +1,4 @@
-const CACHE_NAME='belegging-rendement-pwa-v2.1-root-icons';
+const CACHE_NAME='belegging-rendement-pwa-v2.2-historie';
 const APP_FILES=['./','./index.html','./manifest.webmanifest','./icon-180.png','./icon-192.png','./icon-512.png'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE_NAME).then(c=>c.addAll(APP_FILES)));self.skipWaiting()});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE_NAME).map(k=>caches.delete(k)))));self.clients.claim()});
